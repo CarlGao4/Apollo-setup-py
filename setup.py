@@ -42,11 +42,21 @@ shutil.move("apollo_repo/look2hear", ".")
 # Remove the cloned repository
 shutil.rmtree("apollo_repo", onerror=remove_readonly)
 
+requirements = [
+    "torch>=2.0,<2.5",
+    "numpy<2",
+    "huggingface-hub",
+    "ml-collections",
+    "omegaconf",
+    "librosa",
+]
+
 setup(
     name="Apollo",
     description="Apollo: Band-sequence Modeling for High-Quality Audio Restoration",
     version="0.1+git" + git_hash,
     url="https://github.com/JusperLee/Apollo",
+    install_requires=requirements,
     packages=["look2hear"],
     package_data={
         "look2hear": ["**/*"],
